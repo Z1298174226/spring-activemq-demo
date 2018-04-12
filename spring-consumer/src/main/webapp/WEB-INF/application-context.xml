@@ -35,13 +35,20 @@
     </bean>
 
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="connectionFactory" ref="txAwareConnectionFactory"/>
         <property name="destinationName" value="logsQueue"/>
-        <property name="messageListener" ref="messageListener"/>
+        <property name="messageListener" ref="timingListener"/>
         <property name="concurrentConsumers" value="10"/>
+        <property name="sessionTransacted" value="true" />
     </bean>
+
+    <bean id="txAwareConnectionFactory" class="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy">
+        <property name="targetConnectionFactory" ref="jmsConnectionFactory" />
+    </bean>
+
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="connectionFactory" ref="txAwareConnectionFactory"/>
     </bean>
+
     <tx:annotation-driven/>
 </beans>
