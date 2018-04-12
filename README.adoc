@@ -1,0 +1,37 @@
+= Test Scenarios
+
+== Resources
+
+* ActiveMQ Guidelines: https://tomitribe.zendesk.com/knowledge/articles/360000237148/en-us?brand_id=3266648
+
+== Prerequisites
+
+* Run this once: `mvn clean install`. It will build the images locally.
+* Have docker-compose installed
+
+== Running
+
+The `compose` diretory has all the sample configurations. You run one of the samples with...
+
+```
+docker-compose -f compose/multi_spring.yaml down && docker-compose -f compose/multi_spring.yaml up
+```
+
+The ActiveMQ Console will be available at http://localhost:8161/admin/queues.jsp
+
+You can trigger the tests with...
+
+ ```
+ curl -X POST http://localhost:8080/api/log/lala -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=10&number_of_forward_messages=10'
+ ```
+
+=== `-d` Parameters
+
+* `number_of_messages` (default:  "1000")
+* `size_of_message` (default:  "1")
+* `delay_message_process` (default:  "0")
+* `message_throws_exception` (default:  "false")
+* `persistent_message` (default:  "false")
+* `number_of_forward_messages` (default:  "1000")
+* `size_of_forward_message` (default:  "1000")
+* `persistent_forward_message` (default:  "false")

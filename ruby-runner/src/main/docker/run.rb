@@ -1,0 +1,1 @@
+p "Empty script. [Use the SCRIPT environment value to replace this default script]"
