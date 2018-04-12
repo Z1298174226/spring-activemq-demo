@@ -8,4 +8,4 @@ do
 done
 
 echo "All dependencies are online. Starting up this service now."
-/opt/tomcat/bin/catalina.sh $1
+/opt/tomcat/bin/catalina.sh "$@"
