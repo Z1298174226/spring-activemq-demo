@@ -22,7 +22,7 @@ public class ServiceForwardImpl implements ServiceForward {
     ) throws InterruptedException {
         final int deliveryMode = persistentMessage ? DeliveryMode.PERSISTENT : DeliveryMode.NON_PERSISTENT;
         final AtomicInteger counter = new AtomicInteger(0);
-        while (counter.get() < numberOfMessages) {
+        while (counter.incrementAndGet() <= numberOfMessages) {
             jmsTemplate.send("logsQueueB", session -> {
                 final Message msg = session.createMessage();
                 msg.setObjectProperty("payload", payload);

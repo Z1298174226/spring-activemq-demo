@@ -28,7 +28,7 @@ services:
       - amq1
     environment:
       WAIT_FOR: "amq1:8161"
-      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616'"
+      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616' -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000"
 
   receiver_2:
     hostname: "receiver_2"
