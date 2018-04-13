@@ -44,12 +44,17 @@
         <property name="destinationName" value="logsQueue"/>
         <property name="messageListener" ref="timingListener"/>
         <property name="concurrentConsumers" value="1"/>
+        <property name="maxConcurrentConsumers" value="20"/>
         <property name="sessionTransacted" value="true" />
         <property name="taskExecutor" ref="taskExecutor"/>
     </bean>
 
     <bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <property name="targetConnectionFactory" ref="jmsConnectionFactory" />
+        <property name="cacheProducers" value="false"/>
+        <property name="cacheConsumers" value="false"/>
+        <property name="sessionCacheSize" value="100"/>
+        <property name="clientId" value="test-client"/>
     </bean>
 
     <bean id="txAwareConnectionFactory" class="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy">

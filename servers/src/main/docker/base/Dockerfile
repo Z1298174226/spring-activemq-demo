@@ -1,7 +1,7 @@
-FROM openjdk:8u162-jre-stretch
+FROM openjdk:8u162-jdk-stretch
 
 RUN apt-get update
-RUN apt-get install gnupg curl openssl bash wget strace lsof -y
+RUN apt-get install gnupg curl openssl bash wget strace lsof procps -y
 RUN mkdir -p /opt
 WORKDIR /opt
 
