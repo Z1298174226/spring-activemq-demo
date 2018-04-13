@@ -16,6 +16,11 @@ COPY commons-dbcp.jar .
 COPY commons-pool.jar .
 RUN curl -s -o postgresql.jar https://jdbc.postgresql.org/download/postgresql-9.4.1212.jre6.jar
 
+WORKDIR /opt/activemq/conf
+
+# uncomment this for Inactivity logging on the broker
+# COPY log4j.properties .
+
 WORKDIR /opt/activemq
 
 COPY start.sh .

@@ -42,8 +42,13 @@
         <property name="sessionTransacted" value="true" />
     </bean>
 
-    <bean id="txAwareConnectionFactory" class="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy">
+    <bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <property name="targetConnectionFactory" ref="jmsConnectionFactory" />
+    </bean>
+
+    <bean id="txAwareConnectionFactory" class="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy">
+        <property name="targetConnectionFactory" ref="cachingConnectionFactory" />
+        <property name="synchedLocalTransactionAllowed" value="true"/>
     </bean>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">

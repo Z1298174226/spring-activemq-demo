@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>
-            <version>${amq.version}</version>
+            <version>${amq.client.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
