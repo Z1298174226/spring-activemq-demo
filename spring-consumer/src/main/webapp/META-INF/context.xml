@@ -18,4 +18,9 @@
 -->
 <Context antiJARLocking="true" path="/spring">
   <!-- place holder -->
+
+  <Resource name="WorkManager" auth="Container" type="commonj.work.WorkManager"
+            factory="de.myfoo.commonj.work.FooWorkManagerFactory"
+            minThreads="20" maxThreads="100" />
+
 </Context>
