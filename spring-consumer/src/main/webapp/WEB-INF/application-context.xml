@@ -2,11 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
     <context:component-scan base-package="springreceiver"/>
@@ -14,9 +16,12 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
-    <task:annotation-driven executor="myExecutor" scheduler="myScheduler"/>
-    <task:executor id="myExecutor" pool-size="5"/>
-    <task:scheduler id="myScheduler" pool-size="10"/>
+
+    <jee:jndi-lookup id = "workManager" jndi-name = "WorkManager" expected-type="commonj.work.WorkManager" />
+
+    <bean id="taskExecutor" class="org.springframework.scheduling.commonj.WorkManagerTaskExecutor" >
+        <property name="workManager" ref="workManager" />
+    </bean>
 
     <!-- a pooling based JMS provider -->
     <bean id="jmsConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
@@ -38,12 +43,18 @@
         <property name="connectionFactory" ref="txAwareConnectionFactory"/>
         <property name="destinationName" value="logsQueue"/>
         <property name="messageListener" ref="timingListener"/>
-        <property name="concurrentConsumers" value="10"/>
+        <property name="concurrentConsumers" value="1"/>
+        <property name="maxConcurrentConsumers" value="20"/>
         <property name="sessionTransacted" value="true" />
+        <property name="taskExecutor" ref="taskExecutor"/>
     </bean>
 
     <bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <property name="targetConnectionFactory" ref="jmsConnectionFactory" />
+        <property name="cacheProducers" value="false"/>
+        <property name="cacheConsumers" value="false"/>
+        <property name="sessionCacheSize" value="100"/>
+        <property name="clientId" value="test-client"/>
     </bean>
 
     <bean id="txAwareConnectionFactory" class="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy">
