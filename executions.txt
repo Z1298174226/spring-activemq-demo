@@ -1,51 +1,25 @@
 curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=0'
-
-sender_1_1    | 18-Apr-2018 13:28:52.646 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage Messages sent in 6200 ms.
-sender_1_1    | 18-Apr-2018 13:28:52.646 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     number_of_messages = 1000
-sender_1_1    | 18-Apr-2018 13:28:52.647 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     size_of_message = 1kb
-sender_1_1    | 18-Apr-2018 13:28:52.647 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     delay_message_process = 0 seconds
-sender_1_1    | 18-Apr-2018 13:28:52.647 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     message_throws_exception = false
-sender_1_1    | 18-Apr-2018 13:28:52.647 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     persistent_message = false
-sender_1_1    | 18-Apr-2018 13:28:52.647 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] number_of_forward_messages = 10
-sender_1_1    | 18-Apr-2018 13:28:52.648 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] size_of_forward_message = 1000kb
-sender_1_1    | 18-Apr-2018 13:28:52.648 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] persistent_forward_message = false
-
 Key 'a' processed 1000 in 49161ms.
 
 ------------------------------------------------------------------------------------------------------------------------
 
 curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=1'
-
-sender_1_1    | 18-Apr-2018 13:34:33.051 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage Messages sent in 4450 ms.
-sender_1_1    | 18-Apr-2018 13:34:33.052 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     number_of_messages = 1000
-sender_1_1    | 18-Apr-2018 13:34:33.052 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     size_of_message = 1kb
-sender_1_1    | 18-Apr-2018 13:34:33.052 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     delay_message_process = 1 seconds
-sender_1_1    | 18-Apr-2018 13:34:33.053 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     message_throws_exception = false
-sender_1_1    | 18-Apr-2018 13:34:33.053 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     persistent_message = false
-sender_1_1    | 18-Apr-2018 13:34:33.053 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] number_of_forward_messages = 10
-sender_1_1    | 18-Apr-2018 13:34:33.053 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] size_of_forward_message = 1000kb
-sender_1_1    | 18-Apr-2018 13:34:33.053 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] persistent_forward_message = false
-
 Key 'b' processed 1000 in 84510ms.
 
 ------------------------------------------------------------------------------------------------------------------------
 
 curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=2'
-
-sender_1_1    | 18-Apr-2018 13:24:25.215 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage Messages sent in 3511 ms.
-sender_1_1    | 18-Apr-2018 13:24:25.215 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     number_of_messages = 1000
-sender_1_1    | 18-Apr-2018 13:24:25.216 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     size_of_message = 1kb
-sender_1_1    | 18-Apr-2018 13:24:25.216 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     delay_message_process = 2 seconds
-sender_1_1    | 18-Apr-2018 13:24:25.216 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     message_throws_exception = false
-sender_1_1    | 18-Apr-2018 13:24:25.216 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     persistent_message = false
-sender_1_1    | 18-Apr-2018 13:24:25.217 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] number_of_forward_messages = 10
-sender_1_1    | 18-Apr-2018 13:24:25.217 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] size_of_forward_message = 1000kb
-sender_1_1    | 18-Apr-2018 13:24:25.217 INFO [http-nio-8080-exec-1] springsender.MessagesServiceImpl.postMessage     [forward] persistent_forward_message = false
-
 Key 'c' processed 1000 in 145050ms.
 
 ------------------------------------------------------------------------------------------------------------------------
+
+curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=3'
+Key 'd' processed 1000 in 192256ms.
+
 ------------------------------------------------------------------------------------------------------------------------
+
+curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=4'
+Key 'e' processed 1000 in 252526ms.
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
