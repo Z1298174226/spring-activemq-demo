@@ -30,7 +30,7 @@ services:
       - amq1
     environment:
       WAIT_FOR: "amq1:8161"
-      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616'"
+      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616' -Damq.consumers=1"
     # Uncomment the line below to remote debug on port 8001
     #command: ["jpda", "run"]
 
@@ -77,7 +77,7 @@ services:
     ports:
       - 8161:8161
     environment:
-      ACTIVEMQ_OPTS: "-Xms64M -Xmx4G -verbose:memory,gc -XX:+PrintGCDetails -XX:+PrintTenuringDistribution -Xloggc:/opt/activemq/data/gc.log -XX:+PrintReferenceGC -XX:+PrintGCCause -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCDateStamps -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/activemq/data"
+      ACTIVEMQ_OPTS: "-Xms64M -Xmx4G"
       AMQ_XML: |
         <!--
             Licensed to the Apache Software Foundation (ASF) under one or more
@@ -150,13 +150,13 @@ services:
                   <systemUsage>
                     <systemUsage sendFailIfNoSpace="true">
                         <memoryUsage>
-                            <memoryUsage limit="1 gb" />
+                            <memoryUsage limit="10 gb" />
                         </memoryUsage>
                         <storeUsage>
-                            <storeUsage limit="10 gb"/>
+                            <storeUsage limit="20 gb"/>
                         </storeUsage>
                         <tempUsage>
-                            <tempUsage limit="10 gb"/>
+                            <tempUsage limit="20 gb"/>
                         </tempUsage>
                     </systemUsage>
                 </systemUsage>
