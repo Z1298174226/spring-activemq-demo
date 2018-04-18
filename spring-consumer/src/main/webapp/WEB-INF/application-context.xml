@@ -34,15 +34,13 @@
         </property>
     </bean>
 
-    <bean id="messageListener" class="springreceiver.LogMessage"/>
-    <bean id="timingListener" class="springreceiver.TimingMessageListener">
-        <property name="delegate" ref="messageListener"/>
-    </bean>
 
+    <bean id="counter" class="springreceiver.Counter"/>
+    <bean id="messageListener" class="springreceiver.LogMessage"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="txAwareConnectionFactory"/>
         <property name="destinationName" value="logsQueue"/>
-        <property name="messageListener" ref="timingListener"/>
+        <property name="messageListener" ref="messageListener"/>
         <property name="concurrentConsumers" value="1"/>
         <property name="maxConcurrentConsumers" value="20"/>
         <property name="sessionTransacted" value="true" />

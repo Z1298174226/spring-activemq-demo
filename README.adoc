@@ -21,9 +21,9 @@ The ActiveMQ Console will be available at http://localhost:8161/admin/queues.jsp
 
 You can trigger the tests with...
 
- ```
- curl -X POST http://localhost:8080/api/log/lala -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=10&number_of_forward_messages=10'
- ```
+```
+curl -X POST http://localhost:8080/api/log/lala -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=10&number_of_forward_messages=10'
+```
 
 === `-d` Parameters
 

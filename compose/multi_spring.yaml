@@ -34,40 +34,40 @@ services:
     # Uncomment the line below to remote debug on port 8001
     #command: ["jpda", "run"]
 
-#  receiver_2:
-#    hostname: "receiver_2"
-#    image: "tomitribe-support/spring-activemq-demo-ruby-runner:0.0.1-SNAPSHOT"
-#    depends_on:
-#      - amq1
-#    networks:
-#      - testnwk
-#    environment:
-#      WAIT_FOR: "amq1:8161"
-#      SCRIPT: |
-#        require 'rubygems'
-#        require 'stomp'
-#
-#        stomp_params = {
-#            :hosts => [
-#                {:host => "amq1", :port => 61613}
-#            ]
-#        }
-#
-#        p "Executing ruby AMQ client..."
-#
-#        client = Stomp::Connection.new(stomp_params)
-#        client.subscribe("/queue/logsQueueB", {:ack => 'client'})
-#
-#        loop do
-#          msg = client.receive
-#          unless msg.nil?
-#            begin
-#                client.ack(msg.headers["message-id"])
-#              rescue
-#                p "Not able to acknowledge this message due to error"
-#              end
-#          end
-#        end
+  receiver_2:
+    hostname: "receiver_2"
+    image: "tomitribe-support/spring-activemq-demo-ruby-runner:0.0.1-SNAPSHOT"
+    depends_on:
+      - amq1
+    networks:
+      - testnwk
+    environment:
+      WAIT_FOR: "amq1:8161"
+      SCRIPT: |
+        require 'rubygems'
+        require 'stomp'
+
+        stomp_params = {
+            :hosts => [
+                {:host => "amq1", :port => 61613}
+            ]
+        }
+
+        p "Executing ruby AMQ client..."
+
+        client = Stomp::Connection.new(stomp_params)
+        client.subscribe("/queue/logsQueueB", {:ack => 'client'})
+
+        loop do
+          msg = client.receive
+          unless msg.nil?
+            begin
+                client.ack(msg.headers["message-id"])
+              rescue
+                p "Not able to acknowledge this message due to error"
+              end
+          end
+        end
 
   amq1:
     hostname: "amq1"

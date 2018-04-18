@@ -19,7 +19,7 @@ public class ServiceForwardImpl implements ServiceForward {
             final Object payload,
             final int numberOfMessages,
             final boolean persistentMessage
-    ) throws InterruptedException {
+    ) {
         final int deliveryMode = persistentMessage ? DeliveryMode.PERSISTENT : DeliveryMode.NON_PERSISTENT;
         final AtomicInteger counter = new AtomicInteger(0);
         while (counter.incrementAndGet() <= numberOfMessages) {
