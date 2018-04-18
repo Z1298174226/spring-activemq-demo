@@ -31,6 +31,9 @@ public class LogMessage implements MessageListener {
     @Autowired
     private ServiceForward forward;
 
+    @Autowired
+    private Counter counter;
+
     private String createPayload(int size) {
         final int sizeKb = size * 1024;
         final StringBuilder sb = new StringBuilder(sizeKb);
@@ -64,7 +67,7 @@ public class LogMessage implements MessageListener {
                     numberOfForwardMessages,
                     persistentForwardMessage
             );
-            logger.info("Forwarded " + numberOfForwardMessages + " messages in " + (System.currentTimeMillis() - start) + " ms.");
+            logger.fine("Forwarded " + numberOfForwardMessages + " messages in " + (System.currentTimeMillis() - start) + " ms.");
         } catch (InterruptedException | JMSException e) {
             throw new InvalidStateException(e);
         }
@@ -78,6 +81,7 @@ public class LogMessage implements MessageListener {
         } catch (JMSException e) {
             // no-op
         }
+        this.counter.updateCounter(key);
     }
 
 }

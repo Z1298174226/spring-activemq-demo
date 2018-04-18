@@ -64,6 +64,7 @@ public class MessagesServiceImpl implements MessagesService {
                     runningTasks,
                     counter,
                     key,
+                    numberOfMessages,
                     delayMessageProcess,
                     messageThrowsException,
                     payload,
@@ -108,6 +109,7 @@ public class MessagesServiceImpl implements MessagesService {
         private final BlockingQueue<Runnable> runningTasks;
         private final AtomicInteger counter;
         private final String key;
+        private final int numberOfMessages;
         private final int delayMessageProcess;
         private final boolean messageThrowsException;
         private final String payload;
@@ -120,6 +122,7 @@ public class MessagesServiceImpl implements MessagesService {
                 final BlockingQueue<Runnable> runningTasks,
                 final AtomicInteger counter,
                 final String key,
+                final int numberOfMessages,
                 final int delayMessageProcess,
                 final boolean messageThrowsException,
                 final String payload,
@@ -131,6 +134,7 @@ public class MessagesServiceImpl implements MessagesService {
             this.runningTasks = runningTasks;
             this.counter = counter;
             this.key = key;
+            this.numberOfMessages = numberOfMessages;
             this.delayMessageProcess = delayMessageProcess;
             this.messageThrowsException = messageThrowsException;
             this.payload = payload;
@@ -151,6 +155,7 @@ public class MessagesServiceImpl implements MessagesService {
                     msg.setBooleanProperty("messageThrowsException", messageThrowsException);
                     msg.setIntProperty("sizeOfForwardedMessage", sizeOfForwardedMessage);
                     msg.setIntProperty("numberOfForwardMessages", numberOfForwardMessages);
+                    msg.setIntProperty("numberOfMessages", numberOfMessages);
                     msg.setBooleanProperty("persistentForwardMessage", persistentForwardMessage);
                     msg.setJMSDeliveryMode(deliveryMode);
                     return msg;

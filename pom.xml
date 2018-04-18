@@ -67,7 +67,7 @@
     </build>
     <repositories>
         <repository>
-            <id>local</id>
+            <id>embedded</id>
             <name>local</name>
             <url>file://${project.basedir}/repo</url>
             <layout>default</layout>
