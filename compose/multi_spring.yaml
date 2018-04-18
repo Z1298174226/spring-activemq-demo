@@ -4,7 +4,7 @@ services:
 
   sender_1:
     hostname: "sender_1"
-    image: "tomitribe-support/spring-activemq-demo-producer:0.0.1-SNAPSHOT"
+    image: "tveronezi/spring-activemq-demo-producer:0.0.1-SNAPSHOT"
     ports:
      - "8080:8080"
      - "8000:8000"
@@ -20,7 +20,7 @@ services:
 
   receiver_1:
     hostname: "receiver_1"
-    image: "tomitribe-support/spring-activemq-demo-consumer:0.0.1-SNAPSHOT"
+    image: "tveronezi/spring-activemq-demo-consumer:0.0.1-SNAPSHOT"
     ports:
      - "8081:8080"
      - "8001:8000"
@@ -30,13 +30,13 @@ services:
       - amq1
     environment:
       WAIT_FOR: "amq1:8161"
-      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616' -Damq.consumers=1"
+      CATALINA_OPTS: "-Xms128m -Xmx512m -Damq='tcp://amq1:61616' -Damq.consumers=${CONSUMERS}"
     # Uncomment the line below to remote debug on port 8001
     #command: ["jpda", "run"]
 
   receiver_2:
     hostname: "receiver_2"
-    image: "tomitribe-support/spring-activemq-demo-ruby-runner:0.0.1-SNAPSHOT"
+    image: "tveronezi/spring-activemq-demo-ruby-runner:0.0.1-SNAPSHOT"
     depends_on:
       - amq1
     networks:
@@ -71,7 +71,7 @@ services:
 
   amq1:
     hostname: "amq1"
-    image: "tomitribe-support/spring-activemq-demo-amq:0.0.1-SNAPSHOT"
+    image: "tveronezi/spring-activemq-demo-amq:0.0.1-SNAPSHOT"
     networks:
       - testnwk
     ports:
