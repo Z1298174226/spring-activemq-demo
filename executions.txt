@@ -1,28 +1,209 @@
-curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=0'
-Key 'a' processed 1000 in 49161ms.
+------------------------------------------------------------------------------------------------------------------------
+
+Message execution delay: 0s
+
+curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=1&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=1&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=1&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=1&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=1&delay_message_process=0'
+
+Forward Message size: 1KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF    | 2 MF   | 4 MF   | 8 MF    | 16 MF   |
+| 1 C        | 45 sec  | 46 sec | 67 sec | 114 sec | 117 sec |
+| 2 C        | 38 sec  | 39 sec | 53 sec | 72 sec  | 190 sec |
+| 4 C        | 41 sec  | 55 sec | 63 sec | 87 sec  | X sec  |
+| 8 C        | X  sec  | X sec  | X sec  | X sec   | X sec  |
+| 16 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
+| 32 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
+| 64 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
+
+
+------------------------------------------------------------
+
+curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=50&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=50&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=50&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=50&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=50&delay_message_process=0'
+
+Forward Message size: 50KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF    | 8 MF    | 16 MF   |
+| 1 C        | 59 sec | 68 sec | 110 sec | 202 sec | 313 sec |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+------------------------------------------------------------
+
+curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=100&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=100&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=100&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=100&delay_message_process=0'
+curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=100&delay_message_process=0'
+
+Forward Message size: 100KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF    | 8 MF    | 16 MF   |
+| 1 C        | 85 sec | 87 sec | 228 sec | 247 sec | 383 sec |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=1'
-Key 'b' processed 1000 in 84510ms.
+Message execution delay: 1s
+
+Forward Message size: 1KB, 1000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 50KB, 1000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 100KB, 1000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=2'
-Key 'c' processed 1000 in 145050ms.
+Message execution delay: 2s
+
+Forward Message size: 1KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 50KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 100KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=3'
-Key 'd' processed 1000 in 192256ms.
+Message execution delay: 4s
+
+Forward Message size: 1KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 50KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 100KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1000&number_of_forward_messages=10&size_of_forward_message=1000&delay_message_process=4'
-Key 'e' processed 1000 in 252526ms.
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------
+Message execution delay: 8s
+
+Forward Message size: 1KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 50KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
+Forward Message size: 100KB, 20000 initial messages
+X Axis - Messages forwarded, Y Axis Consumer count
+|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
+| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+
 ------------------------------------------------------------------------------------------------------------------------
