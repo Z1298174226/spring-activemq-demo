@@ -10,11 +10,11 @@ curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www
 
 Forward Message size: 1KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF    | 2 MF   | 4 MF   | 8 MF    | 16 MF   |
-| 1 C        | 45 sec  | 46 sec | 67 sec | 114 sec | 117 sec |
-| 2 C        | 38 sec  | 39 sec | 53 sec | 72 sec  | 190 sec |
-| 4 C        | 41 sec  | 55 sec | 63 sec | 87 sec  | X sec  |
-| 8 C        | X  sec  | X sec  | X sec  | X sec   | X sec  |
+|            | 1 MF    | 2 MF   | 4 MF   | 8 MF    | 16 MF  |
+| 1 C        | 61 sec  | 71 sec | 77 sec | 82 sec  | 96 sec |
+| 2 C        | 61 sec  | 73 sec | 79 sec | 82 sec  | 93 sec |
+| 4 C        | 61 sec  | 72 sec | 84 sec | 84 sec  | 96 sec |
+| 8 C        | 61  sec | 72 sec | 79 sec | 82 sec  | 95 sec |
 | 16 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
 | 32 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
 | 64 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
@@ -31,13 +31,13 @@ curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www
 Forward Message size: 50KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF   | 2 MF   | 4 MF    | 8 MF    | 16 MF   |
-| 1 C        | 59 sec | 68 sec | 110 sec | 202 sec | 313 sec |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 1 C        | 87 sec | 92 sec | 114 sec | 150 sec | 215 sec |
+| 2 C        | 82 sec | 86 sec | 109 sec | 150 sec | 216 sec |
+| 4 C        | 84 sec | 93 sec | 113 sec | 148 sec | 216 sec |
+| 8 C        | x sec  | x sec  | X sec   | X sec  | X sec  |
+| 16 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
+| 32 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
+| 64 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
 
 ------------------------------------------------------------
 
@@ -50,7 +50,7 @@ curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www
 Forward Message size: 100KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF   | 2 MF   | 4 MF    | 8 MF    | 16 MF   |
-| 1 C        | 85 sec | 87 sec | 228 sec | 247 sec | 383 sec |
+| 1 C        | 94 sec | x sec | x sec | x sec | x sec |
 | 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
 | 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
 | 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
@@ -94,116 +94,3 @@ X Axis - Messages forwarded, Y Axis Consumer count
 | 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 | 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
 | 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-------------------------------------------------------------------------------------------------------------------------
-
-Message execution delay: 2s
-
-Forward Message size: 1KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 50KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 100KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-------------------------------------------------------------------------------------------------------------------------
-
-Message execution delay: 4s
-
-Forward Message size: 1KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 50KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 100KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-------------------------------------------------------------------------------------------------------------------------
-
-Message execution delay: 8s
-
-Forward Message size: 1KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 50KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-Forward Message size: 100KB, 20000 initial messages
-X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-
-------------------------------------------------------------------------------------------------------------------------
