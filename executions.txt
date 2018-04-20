@@ -2,31 +2,14 @@
 
 Message execution delay: 0s
 
-curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=1&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=1&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=1&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=1&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=1&delay_message_process=0'
-
 Forward Message size: 1KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF    | 2 MF   | 4 MF   | 8 MF    | 16 MF  |
 | 1 C        | 61 sec  | 71 sec | 77 sec | 82 sec  | 96 sec |
 | 2 C        | 61 sec  | 73 sec | 79 sec | 82 sec  | 93 sec |
 | 4 C        | 61 sec  | 72 sec | 84 sec | 84 sec  | 96 sec |
-| 8 C        | 61  sec | 72 sec | 79 sec | 82 sec  | 95 sec |
-| 16 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
-| 32 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
-| 64 C       | X  sec  | X sec  | X sec  | X sec   | X sec  |
-
 
 ------------------------------------------------------------
-
-curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=50&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=50&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=50&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=50&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=50&delay_message_process=0'
 
 Forward Message size: 50KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
@@ -34,63 +17,85 @@ X Axis - Messages forwarded, Y Axis Consumer count
 | 1 C        | 87 sec | 92 sec | 114 sec | 150 sec | 215 sec |
 | 2 C        | 82 sec | 86 sec | 109 sec | 150 sec | 216 sec |
 | 4 C        | 84 sec | 93 sec | 113 sec | 148 sec | 216 sec |
-| 8 C        | x sec  | x sec  | X sec   | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec   | X sec  | X sec  |
 
 ------------------------------------------------------------
 
-curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=100&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=100&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=100&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=100&delay_message_process=0'
-curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=100&delay_message_process=0'
-
 Forward Message size: 100KB, 20000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
-|            | 1 MF   | 2 MF   | 4 MF    | 8 MF    | 16 MF   |
-| 1 C        | 94 sec | x sec | x sec | x sec | x sec |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+|            | 1 MF   | 2 MF    | 4 MF    | 8 MF    | 16 MF   |
+| 1 C        | 94 sec | 117 sec | 139 sec | 193 sec | 301 sec |
+| 2 C        | 89 sec | 105 sec | 140 sec | 196 sec | 302 sec |
+| 4 C        | 89 sec | 108 sec | 137 sec | 199 sec | 302 sec |
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Message execution delay: 1s
+Message execution delay: 100ms
 
-Forward Message size: 1KB, 1000 initial messages
+Forward Message size: 1KB, 500 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 1 C        | 51 sec | 51 sec | 51 sec | 51 sec | 51 sec |
+| 2 C        | 26 sec | 26 sec | 26 sec | 26 sec | 26 sec |
+| 4 C        | 13 sec | 13 sec | 13 sec | 13 sec | 13 sec |
+| 8 C        | 7  sec | 7 sec  | 7 sec  | 7 sec  | 7 sec  |
+| 16 C       | 4 sec  | 4 sec  | 4 sec  | 4 sec  | 4 sec  |
+| 32 C       | 5 sec  | 5 sec  | 5 sec  | 6 sec  | 6 sec  |
+| 64 C       | 5 sec  | 5 sec  | 5 sec  | 6 sec  | 6 sec  |
+
+------------------------------------------------------------
 
 Forward Message size: 50KB, 1000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 1 C        | 52 sec | 52 sec | 52 sec | 53 sec | 54 sec |
+| 2 C        | 26 sec | 26 sec | 26 sec | 26 sec | 27 sec |
+| 4 C        | 13 sec | 13 sec | 13 sec | 13 sec | 14 sec |
+| 8 C        | 7 sec  | 7 sec  | 7 sec  | 7 sec  | 8 sec  |
+| 16 C       | 4 sec  | 4 sec  | 4 sec  | 4 sec  | 6 sec  |
+| 32 C       | 5 sec  | 5 sec  | 6 sec  | 6 sec  | 9 sec  |
+| 64 C       | 5 sec  | 5 sec  | 6 sec  | 6 sec  | 9 sec  |
+
+------------------------------------------------------------
 
 Forward Message size: 100KB, 1000 initial messages
 X Axis - Messages forwarded, Y Axis Consumer count
 |            | 1 MF   | 2 MF   | 4 MF   | 8 MF   | 16 MF  |
-| 1 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 2 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 4 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 8 C        | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 16 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 32 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
-| 64 C       | X sec  | X sec  | X sec  | X sec  | X sec  |
+| 1 C        | 52 sec | 52 sec | 53 sec | 54 sec | 56 sec |
+| 2 C        | 26 sec | 26 sec | 26 sec | 27 sec | 28 sec |
+| 4 C        | 13 sec | 13 sec | 13 sec | 14 sec | 15 sec |
+| 8 C        | 7 sec  | 7 sec  | 7 sec  | 7 sec  | 8 sec  |
+| 16 C       | 4 sec  | 4 sec  | 4 sec  | 5 sec  | 8 sec  |
+| 32 C       | 5 sec  | 5 sec  | 5 sec  | 7 sec  | 11 sec |
+| 64 C       | 5 sec  | 5 sec  | 6 sec  | 8 sec  | 10 sec |
+
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+export CONSUMERS=1
+docker-compose -f multi_spring.yaml down && docker-compose -f multi_spring.yaml up
+
+# this will bootstrap the spring beans
+curl -X POST http://localhost:8080/api/log/zzz -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=1&number_of_forward_messages=1&size_of_forward_message=1&delay_message_process=0' && sleep 1s
+curl http://localhost:8081/api/log/zzz
+
+curl -X POST http://localhost:8080/api/log/a -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=1&size_of_forward_message=1&delay_message_process=0' && sleep 200s
+curl -X POST http://localhost:8080/api/log/b -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=2&size_of_forward_message=1&delay_message_process=0' && sleep 200s
+curl -X POST http://localhost:8080/api/log/c -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=4&size_of_forward_message=1&delay_message_process=0' && sleep 200s
+curl -X POST http://localhost:8080/api/log/d -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=8&size_of_forward_message=1&delay_message_process=0' && sleep 200s
+curl -X POST http://localhost:8080/api/log/e -H 'Content-Type: application/x-www-form-urlencoded' -d 'number_of_messages=20000&number_of_forward_messages=16&size_of_forward_message=1&delay_message_process=0' && sleep 200s
+
+curl http://localhost:8081/api/log/a
+curl http://localhost:8081/api/log/b
+curl http://localhost:8081/api/log/c
+curl http://localhost:8081/api/log/d
+curl http://localhost:8081/api/log/e

@@ -42,7 +42,7 @@
         <property name="destinationName" value="logsQueue"/>
         <property name="messageListener" ref="messageListener"/>
         <property name="concurrentConsumers" value="1"/>
-        <property name="maxConcurrentConsumers" value="#{systemProperties['amq.consumers']}"/>
+        <property name="maxConcurrentConsumers" value="#{systemProperties['amq.consumers'] == null ? 1 : systemProperties['amq.consumers']}"/>
         <property name="sessionTransacted" value="true" />
         <property name="taskExecutor" ref="taskExecutor"/>
     </bean>
