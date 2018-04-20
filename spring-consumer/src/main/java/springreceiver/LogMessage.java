@@ -74,7 +74,7 @@ public class LogMessage implements MessageListener {
         try {
             int sleep = message.getIntProperty("delayMessageProcess"); // seconds
             if (sleep > 0) {
-                Thread.sleep(sleep * 1000);
+                Thread.sleep(sleep);
             }
         } catch (InterruptedException e) {
             throw new IllegalStateException(e);
